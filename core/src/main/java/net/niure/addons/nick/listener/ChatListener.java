@@ -21,11 +21,18 @@ public class ChatListener {
 
     nickStorage.readNicknamesFromChatMessage(plainText);
 
-    if (!MirrorAddon.getInstance().configuration().replaceInChatOnReceive().get()) {
+    if (plainText.startsWith("[NICK]")) {
+      long distance = MirrorAddon.getLastNickRequest() - System.currentTimeMillis();
+
+      if (distance < 500) {
+        event.setCancelled(true);
+        return;
+      }
+
       return;
     }
 
-    if (plainText.startsWith("[NICK]")) {
+    if (!MirrorAddon.getInstance().configuration().replaceInChatOnReceive().get()) {
       return;
     }
 

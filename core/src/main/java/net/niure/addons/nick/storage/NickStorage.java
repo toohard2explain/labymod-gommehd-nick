@@ -1,6 +1,8 @@
 package net.niure.addons.nick.storage;
 
+import net.labymod.api.client.component.Component;
 import net.labymod.api.client.entity.player.ClientPlayer;
+import net.labymod.api.notification.Notification;
 import net.niure.addons.nick.MirrorAddon;
 import java.util.HashMap;
 import java.util.Map;

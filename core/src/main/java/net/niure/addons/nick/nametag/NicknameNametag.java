@@ -12,7 +12,7 @@ public class NicknameNametag extends NameTag {
 
   @Override
   public float getScale() {
-    return 0.45f;
+    return 0.6f;
   }
 
   @Override
@@ -28,7 +28,7 @@ public class NicknameNametag extends NameTag {
 
     if (nickname == null) return null;
 
-    return RenderableComponent.of(Component.text(nickname));
+    return RenderableComponent.of(Component.text("§6" + nickname));
   }
 
   @Override

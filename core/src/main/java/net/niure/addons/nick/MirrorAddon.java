@@ -6,7 +6,6 @@ import net.labymod.api.client.entity.player.tag.TagRegistry;
 import net.labymod.api.client.gui.hud.binding.category.HudWidgetCategory;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import net.niure.addons.nick.listener.ChatListener;
-import net.niure.addons.nick.listener.ServerListener;
 import net.niure.addons.nick.listener.WorldListener;
 import net.niure.addons.nick.nametag.NicknameNametag;
 import net.niure.addons.nick.storage.NickStorage;
@@ -17,6 +16,8 @@ public class MirrorAddon extends LabyAddon<MirrorAddonConfiguration> {
 
   private static MirrorAddon instance;
   private NickStorage nickStorage;
+
+  private static long lastNickRequest = 0;
 
   @Override
   protected void enable() {
@@ -38,7 +39,6 @@ public class MirrorAddon extends LabyAddon<MirrorAddonConfiguration> {
 
     this.registerListener(new ChatListener());
     this.registerListener(new WorldListener());
-    this.registerListener(new ServerListener());
   }
 
   @Override
@@ -52,5 +52,13 @@ public class MirrorAddon extends LabyAddon<MirrorAddonConfiguration> {
 
   public NickStorage getNickStorage() {
     return nickStorage;
+  }
+
+  public static long getLastNickRequest() {
+    return lastNickRequest;
+  }
+
+  public static void setLastNickRequest(long lastNickRequest) {
+    MirrorAddon.lastNickRequest = lastNickRequest;
   }
 }
