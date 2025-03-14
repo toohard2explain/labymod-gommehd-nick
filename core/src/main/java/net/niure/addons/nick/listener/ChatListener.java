@@ -25,6 +25,10 @@ public class ChatListener {
       return;
     }
 
+    if (plainText.startsWith("[NICK]")) {
+      return;
+    }
+
     Component[] args = event.chatMessage().component().getChildren().toArray(new Component[0]);
 
     for (int i = 0; i < args.length; i++) {
@@ -32,10 +36,15 @@ public class ChatListener {
         continue;
       }
 
-      if (nickStorage.isNickname(textComponent.getText())) {
-        args[i] = textComponent.text(nickStorage.getOriginalNameByNickname(textComponent.getText())).decorate(
-            TextDecoration.ITALIC);
+      String[] strings = textComponent.getText().split(" ");
+
+      for (int i1 = 0; i1 < strings.length; i1++) {
+        if (nickStorage.isNickname(strings[i1])) {
+          strings[i1] = nickStorage.getOriginalNameByNickname(strings[i1]);
+        }
       }
+
+      textComponent.text(String.join(" ", strings)).decorate(TextDecoration.ITALIC);
     }
 
     event.chatMessage().component().setChildren(Arrays.asList(args));
