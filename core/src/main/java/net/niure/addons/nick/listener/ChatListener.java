@@ -21,7 +21,7 @@ public class ChatListener {
 
     nickStorage.readNicknamesFromChatMessage(plainText);
 
-    if (plainText.startsWith("[NICK]")) {
+    if (plainText.startsWith("[NICK]") || plainText.contains("/help")) {
       long distance = MirrorAddon.getLastNickRequest() - System.currentTimeMillis();
 
       if (distance < 500) {
@@ -55,6 +55,12 @@ public class ChatListener {
   @Subscribe
   public void onChatSend(ChatMessageSendEvent event) {
     if (!MirrorAddon.getInstance().configuration().replaceInChatOnSend().get()) {
+      return;
+    }
+
+    if (event.getMessage().contains("/nicks")) {
+      NickStorage nickStorage = MirrorAddon.getInstance().getNickStorage();
+      nickStorage.reset();
       return;
     }
 
