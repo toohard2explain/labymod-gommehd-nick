@@ -1,0 +1,24 @@
+{
+  "ghdnick": {
+    "settings": {
+      "enabled": {
+        "name": "Aktiviert"
+      },
+      "replaceInChatOnSend": {
+        "name": "Ersetzen im Chat beim Senden"
+      },
+      "replaceInChatOnReceive": {
+        "name": "Ersetzen im Chat beim Empfangen"
+      },
+      "displayNicknameOverName": {
+        "name": "Nickname über Name anzeigen"
+      }
+    },
+    "hud": {
+      "nickname": {
+        "name": "Nick",
+        "empty": "Kein Nick"
+      }
+    }
+  }
+}
