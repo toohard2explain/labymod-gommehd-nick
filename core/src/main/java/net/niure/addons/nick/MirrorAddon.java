@@ -1,10 +1,14 @@
 package net.niure.addons.nick;
 
 import net.labymod.api.addon.LabyAddon;
+import net.labymod.api.client.entity.player.tag.PositionType;
+import net.labymod.api.client.entity.player.tag.TagRegistry;
 import net.labymod.api.client.gui.hud.binding.category.HudWidgetCategory;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import net.niure.addons.nick.listener.ChatListener;
 import net.niure.addons.nick.listener.ServerListener;
+import net.niure.addons.nick.listener.WorldListener;
+import net.niure.addons.nick.nametag.NicknameNametag;
 import net.niure.addons.nick.storage.NickStorage;
 import net.niure.addons.nick.widget.NicknameWidget;
 
@@ -23,9 +27,17 @@ public class MirrorAddon extends LabyAddon<MirrorAddonConfiguration> {
     labyAPI().hudWidgetRegistry().categoryRegistry().register(category);
     labyAPI().hudWidgetRegistry().register(new NicknameWidget(category));
 
+    TagRegistry tagRegistry = labyAPI().tagRegistry();
+    tagRegistry.register(
+        "ghdnick_nickname",
+        PositionType.ABOVE_NAME,
+        new NicknameNametag()
+    );
+
     this.registerSettingCategory();
 
     this.registerListener(new ChatListener());
+    this.registerListener(new WorldListener());
     this.registerListener(new ServerListener());
   }
 

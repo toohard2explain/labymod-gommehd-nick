@@ -1,5 +1,10 @@
 {
   "ghdnick": {
+    "hudWidget": {
+      "mirror_ghdnick_nickname": {
+        "name": "Nickname"
+      }
+    },
     "settings": {
       "enabled": {
         "name": "Enabled"
@@ -18,6 +23,14 @@
       "nickname": {
         "name": "Nick",
         "empty": "No nick"
+      }
+    }
+  },
+  "labymod": {
+    "hudWidgetCategory": {
+      "mirror_ghdnick": {
+        "name": "Mirror",
+        "description": "Mirror your nickname"
       }
     }
   }

@@ -1,5 +1,10 @@
 {
   "ghdnick": {
+    "hudWidget": {
+      "mirror_ghdnick_nickname": {
+        "name": "Nickname"
+      }
+    },
     "settings": {
       "enabled": {
         "name": "Aktiviert"
@@ -11,13 +16,21 @@
         "name": "Ersetzen im Chat beim Empfangen"
       },
       "displayNicknameOverName": {
-        "name": "Nickname über Name anzeigen"
+        "name": "Zeige den Nicknamen über dem Namen"
       }
     },
     "hud": {
       "nickname": {
         "name": "Nick",
         "empty": "Kein Nick"
+      }
+    }
+  },
+  "labymod": {
+    "hudWidgetCategory": {
+      "mirror_ghdnick": {
+        "name": "Mirror",
+        "description": "Zeige deinen Nicknamen"
       }
     }
   }
